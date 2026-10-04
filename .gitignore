@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Never commit user data / media / key material
+*.kgm
+*.kgma
+*.vpr
+*.kgg
+*.flac
+*.mp3
+*.wav
+*.ogg
+*.m4a
+KGMusicV3.db*
+kgg.key
+decrypted/
+out/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# 内部文档与开发者工具（不上传 GitHub）
+AI_ASSISTANT_SKILL.md
+_internal/

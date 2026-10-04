@@ -1,0 +1,11 @@
+# 依赖说明（图形界面无需额外依赖，tkinter 随 Python 自带）
+# 可选依赖装法：pip install -r requirements.txt
+
+# 仅处理 .kgg 时必需（密钥库页解密的 AES）。Python >= 3.11
+pycryptodome>=3.19
+
+# 可选：.kgm/.kgma/.vpr 解密提速约 20 倍（未安装时自动回退纯 Python 实现）
+numpy>=1.24
+
+# FFmpeg：仅“转码为目标格式”时需要（保持原始格式无需安装）
+# Windows 下载：https://ffmpeg.org/download.html ，解压后把 bin 目录加入 PATH
