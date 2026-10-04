@@ -1,0 +1,78 @@
+{
+  "files": {
+    "LICENSE": {
+      "sha256": "af92d83f1f4f5d77b6001faf5500f0ffef5f3a0772f64a5db0d3b554c33903b0",
+      "size": 3664
+    },
+    "README.md": {
+      "sha256": "37e0cd859c3cb9a0208cd6878bc9e3690646c01d4ae75bc100146927823f6f58",
+      "size": 18068
+    },
+    "SKILL.md": {
+      "sha256": "0ecd295725820eeead56d2329f6ea9964616d1b98383e99713b038438d9b653d",
+      "size": 6441
+    },
+    "docs/logo.png": {
+      "sha256": "425b8f596e657b760a7a48a1f543cd44d03fbd0d4ed7b795d58fdce442fb40b6",
+      "size": 513424
+    },
+    "docs/python-download-page.png": {
+      "sha256": "e13fe565ba2a11b3a95427b2a6b4223d2c58f14b477625c4c803d49486c0bfc1",
+      "size": 389704
+    },
+    "docs/酷狗解锁器用户手册.pdf": {
+      "sha256": "1c1cc582430d6d0831e8ddb8c7486173b3e8e41ab789610d92357a3c1eacdb57",
+      "size": 970338
+    },
+    "install_mac.command": {
+      "sha256": "7eedcad5293b8b57e61427d72b1e75790c306873968923a25bb1fc03c0d815dc",
+      "size": 3704
+    },
+    "install_windows.bat": {
+      "sha256": "030deee844a27ac21a3f64d9959d36a84469bb861f701b5a8d13e0273e923efe",
+      "size": 813
+    },
+    "install_windows.ps1": {
+      "sha256": "066b97c6658b1a43ad57493d05adc05ac31197c4aafcdfa9459eaddad4963155",
+      "size": 10616
+    },
+    "kugou_integrity.py": {
+      "sha256": "4fbb855427b0a1bfa8ad703bdd7cc5499eca147aab76c3d764dae590873718f3",
+      "size": 10972
+    },
+    "kugou_unlock.py": {
+      "sha256": "eef47fa52b7b4ffdb2d5085b59b24df81554f6c7d784707f1db35612e7a70312",
+      "size": 41660
+    },
+    "kugou_unlock_gui.py": {
+      "sha256": "2468bcb87e38fa345384db229931cdd1675a429e8c581794030ce375845b6898",
+      "size": 30156
+    },
+    "requirements.txt": {
+      "sha256": "2e0e644ac82009b81232f65dff97ea677a8b95b82b902460be57fd2b99609828",
+      "size": 517
+    },
+    "start_kugou_unlocker.bat": {
+      "sha256": "4136bfcbb0a735683850e811b77dab8baf05573dbc2b281a080b5b02ae03e5dc",
+      "size": 484
+    }
+  },
+  "protected_files": [
+    "LICENSE",
+    "README.md",
+    "SKILL.md",
+    "docs/logo.png",
+    "docs/python-download-page.png",
+    "docs/酷狗解锁器用户手册.pdf",
+    "install_mac.command",
+    "install_windows.bat",
+    "install_windows.ps1",
+    "kugou_integrity.py",
+    "kugou_unlock.py",
+    "kugou_unlock_gui.py",
+    "requirements.txt",
+    "start_kugou_unlocker.bat"
+  ],
+  "schema": 2,
+  "signing": "Ed25519 (RFC 8032) — private key held by the developer only"
+}
