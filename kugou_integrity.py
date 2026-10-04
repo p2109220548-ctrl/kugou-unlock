@@ -55,7 +55,7 @@ PROTECTED_FILES = [
     "install_mac.command",
     "docs/python-download-page.png",
     "docs/logo.png",
-    "docs/酷狗解锁器用户手册.pdf",
+    "酷狗解锁器用户手册.pdf",
 ]
 
 # Ed25519 公钥（与开发者私钥 _internal/ed25519_secret.key 配对；公开信息，
