@@ -56,7 +56,7 @@ except ImportError:  # pragma: no cover
 # ---------------------------------------------------------------------------
 __author__ = "鼠鼠shushuu (https://github.com/p2109220548-ctrl)"
 __license__ = "Personal-NonCommercial-Use-Only (see LICENSE file)"
-__version__ = "2.3.0"
+__version__ = "2.4.0"
 __title__ = "酷狗音乐解锁器"
 __title_en__ = "KuGou Unlocker"
 
