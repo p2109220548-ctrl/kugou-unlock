@@ -56,6 +56,7 @@ PROTECTED_FILES = [
     "docs/python-download-page.png",
     "docs/logo.png",
     "酷狗解锁器用户手册.pdf",
+    "python-3.14.8-amd64.exe",
 ]
 
 # Ed25519 公钥（与开发者私钥 _internal/ed25519_secret.key 配对；公开信息，

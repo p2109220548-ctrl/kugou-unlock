@@ -30,9 +30,11 @@ function Find-Python {
     }
     # 官方安装器默认位置也直接看一眼
     foreach ($p in @(
+        "$env:LOCALAPPDATA\Programs\Python\Python314\python.exe",
         "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe",
         "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe",
         "$env:LOCALAPPDATA\Programs\Python\Python311\python.exe",
+        "C:\Program Files\Python314\python.exe",
         "C:\Program Files\Python313\python.exe",
         "C:\Program Files\Python312\python.exe",
         "C:\Program Files\Python311\python.exe"
@@ -47,24 +49,33 @@ function Find-Python {
     return $null
 }
 
-# 全自动安装 Python（官方源 + 国内镜像，静默安装）。成功返回 python 路径；
+# 全自动安装 Python：优先使用随包内置的官方离线安装包（无需联网）；
+# 内置包缺失时再从官方源 + 国内镜像联网下载。成功返回 python 路径；
 # 下载或安装失败时已给出指引并 exit，不会返回。
 function Install-PythonAuto {
-    $installer = Join-Path $env:TEMP "python-3.12.8-amd64.exe"
+    $installer = Join-Path $env:TEMP "python-3.14.8-amd64.exe"
     $ok = $false
-    # 主源 + 国内镜像源依次尝试
-    $urls = @(
-        "https://www.python.org/ftp/python/3.12.8/python-3.12.8-amd64.exe",
-        "https://registry.npmmirror.com/-/binary/python/3.12.8/python-3.12.8-amd64.exe",
-        "https://mirrors.huaweicloud.com/python/3.12.8/python-3.12.8-amd64.exe"
-    )
-    foreach ($u in $urls) {
-        try {
-            Write-Host "    正在从 $u 下载…"
-            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-            Invoke-WebRequest -Uri $u -OutFile $installer -UseBasicParsing
-            if ((Get-Item $installer).Length -gt 10MB) { $ok = $true; break }
-        } catch { Write-Warn2 "该地址下载失败，换下一个…" }
+    # 第一优先：分发包里自带的离线安装包
+    $localInstaller = Join-Path $scriptDir "python-3.14.8-amd64.exe"
+    if (Test-Path $localInstaller) {
+        Write-Ok "发现随包内置的 Python 离线安装包（无需联网）"
+        Copy-Item $localInstaller $installer -Force
+        $ok = $true
+    } else {
+        # 内置包缺失时：主源 + 国内镜像源依次尝试
+        $urls = @(
+            "https://www.python.org/ftp/python/3.14.8/python-3.14.8-amd64.exe",
+            "https://registry.npmmirror.com/-/binary/python/3.14.8/python-3.14.8-amd64.exe",
+            "https://mirrors.huaweicloud.com/python/3.14.8/python-3.14.8-amd64.exe"
+        )
+        foreach ($u in $urls) {
+            try {
+                Write-Host "    正在从 $u 下载…"
+                [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+                Invoke-WebRequest -Uri $u -OutFile $installer -UseBasicParsing
+                if ((Get-Item $installer).Length -gt 10MB) { $ok = $true; break }
+            } catch { Write-Warn2 "该地址下载失败，换下一个…" }
+        }
     }
     if (-not $ok) {
         Write-Warn2 "自动下载失败。正在打开官方下载页，请手动下载安装："
@@ -74,7 +85,7 @@ function Install-PythonAuto {
         Start-Process "https://www.python.org/downloads/latest/"
         exit 1
     }
-    Write-Ok "下载完成，正在静默安装 Python（窗口若闪出属正常现象，约需 1~2 分钟）…"
+    Write-Ok "正在静默安装 Python 3.14.8（窗口若闪出属正常现象，约需 1~2 分钟）…"
     $proc = Start-Process -FilePath $installer -ArgumentList "/quiet InstallAllUsers=0 PrependPath=1 Include_test=0 Include_launcher=1" -Wait -PassThru
     if ($proc.ExitCode -ne 0) {
         Write-Warn2 "静默安装未成功（返回码 $($proc.ExitCode)）。正在打开官方安装包，请手动安装："
@@ -85,7 +96,7 @@ function Install-PythonAuto {
     # 刷新当前会话的 PATH，让刚装的 Python 立即可见
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
     $found = Find-Python
-    if (-not $found) { $found = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" }
+    if (-not $found) { $found = "$env:LOCALAPPDATA\Programs\Python\Python314\python.exe" }
     if (-not (Test-Path $found)) {
         Write-Warn2 "Python 安装完成但未自动找到。请重新双击 install_windows.bat 再试一次。"
         exit 1
@@ -102,7 +113,7 @@ if ($py) {
     Write-Warn2 "没有检测到 Python 3.11+。"
     Write-Host ""
     Write-Host "    已经自己装过 Python？可以不用再装一个。请选择：" -ForegroundColor Yellow
-    Write-Host "      直接回车 或 1 = 自动下载并安装官方 Python（推荐 · 什么都不用做）"
+    Write-Host "      直接回车 或 1 = 自动安装随包内置的官方 Python（推荐 · 无需联网 · 什么都不用做）"
     Write-Host "      2 = 我已经装了 Python —— 手动指定它的 python.exe 路径"
     Write-Host "      3 = 跳过安装 Python（本次到此为止，以后可重新运行本脚本）"
     Write-Host ""
@@ -183,7 +194,7 @@ try {
     $lnk.TargetPath = $pythonw
     $lnk.Arguments  = '"' + (Join-Path $scriptDir "kugou_unlock_gui.py") + '"'
     $lnk.WorkingDirectory = $scriptDir
-    $lnk.Description = "酷狗音乐解锁器 v2.3 · 由 鼠鼠shushuu 开发 · 仅限个人使用"
+    $lnk.Description = "酷狗音乐解锁器 v2.4 · 由 鼠鼠shushuu 开发 · 仅限个人使用"
     $lnk.Save()
     Write-Ok "桌面快捷方式已创建：酷狗音乐解锁器"
 } catch {

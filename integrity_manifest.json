@@ -5,12 +5,12 @@
       "size": 3664
     },
     "README.md": {
-      "sha256": "46ad25569c5700c4a96dff2b66e25b1ee60ce893f07270d7dbc19b2807b662bf",
-      "size": 18058
+      "sha256": "e2e91e442e1d347f26c821ff476515445edb3ec37cf23b95289cb90ea2e32cce",
+      "size": 20993
     },
     "SKILL.md": {
-      "sha256": "90c75216a762b32071bac1c925b5810f437464121c3badddd8ec9ca3bcb12a69",
-      "size": 6431
+      "sha256": "720097d06de4bdd5cad2c91df47d11dd841979be062af31c886564a671a22e38",
+      "size": 6474
     },
     "docs/logo.png": {
       "sha256": "425b8f596e657b760a7a48a1f543cd44d03fbd0d4ed7b795d58fdce442fb40b6",
@@ -29,12 +29,12 @@
       "size": 813
     },
     "install_windows.ps1": {
-      "sha256": "066b97c6658b1a43ad57493d05adc05ac31197c4aafcdfa9459eaddad4963155",
-      "size": 10616
+      "sha256": "0e293c8f5212610c017f284ed32bbc905debd7a49ff622a4fa8038a1f942a0b2",
+      "size": 11260
     },
     "kugou_integrity.py": {
-      "sha256": "3678ad5a9197ba46f9d9f587f73fb827ffdc62045a42cf6eb97a7379a2c43be2",
-      "size": 10967
+      "sha256": "b40d9607199f25e2a110ee2a261678880b52fa11c4906bccfc9037528e17e577",
+      "size": 10998
     },
     "kugou_unlock.py": {
       "sha256": "f78a1b87ebeaa53c9823ee463749de667b9f1ae968e31fa653fc07028096fd70",
@@ -43,6 +43,10 @@
     "kugou_unlock_gui.py": {
       "sha256": "2468bcb87e38fa345384db229931cdd1675a429e8c581794030ce375845b6898",
       "size": 30156
+    },
+    "python-3.14.8-amd64.exe": {
+      "sha256": "759be887b96e736a3ca886daf8d575f18fcae1a09efab6902f42d59e8999f8ef",
+      "size": 33387464
     },
     "requirements.txt": {
       "sha256": "2e0e644ac82009b81232f65dff97ea677a8b95b82b902460be57fd2b99609828",
@@ -53,8 +57,8 @@
       "size": 484
     },
     "酷狗解锁器用户手册.pdf": {
-      "sha256": "50312f1ff62c8af08af34fbbd930e444fab46fe3dcb0c4a3008d31eca843c633",
-      "size": 1133398
+      "sha256": "a3bd164f1686731088980cda2ec7be8d5deb560be2c3a37f52a26161768c05fd",
+      "size": 1132616
     }
   },
   "protected_files": [
@@ -69,6 +73,7 @@
     "kugou_integrity.py",
     "kugou_unlock.py",
     "kugou_unlock_gui.py",
+    "python-3.14.8-amd64.exe",
     "requirements.txt",
     "start_kugou_unlocker.bat",
     "酷狗解锁器用户手册.pdf"
